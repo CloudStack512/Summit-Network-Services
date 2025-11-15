@@ -1,108 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Summit Network Services – Invoice Generator</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <script src="invoice.js" defer></script>
+  <meta charset="UTF-8" />
+  <title>Summit Network Services</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="main.js"></script>
 </head>
 <body>
-  <div class="page">
-    <header class="invoice-header">
-      <div class="brand">
-        <div class="logo-dot"></div>
-        <div>
-          <h1>Summit Network Services</h1>
-          <p>Cable Cleanup • Labeling • Testing • WiFi Optimization</p>
+  <header class="topbar">
+    <div class="logo-mark"></div>
+    <div class="brand-block">
+      <h1>Summit Network Services</h1>
+      <p class="tagline">Clean, reliable networks for small and mid-sized businesses.</p>
+    </div>
+    <a href="#contact" class="btn primary desktop-only">Request an Assessment</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h2>Turn your spaghetti rack into a clean, documented network.</h2>
+        <p>
+          Summit Network Services specializes in rack cleanup, cable management, labeling,
+          testing, and Wi‑Fi optimization. No construction, no chaos—just calm, organized
+          infrastructure you can actually understand.
+        </p>
+        <div class="hero-actions">
+          <a href="#quote" class="btn primary">Get an instant ballpark quote</a>
+          <a href="#services" class="btn ghost">View services</a>
         </div>
       </div>
-      <div class="invoice-meta">
-        <label>
-          Invoice #
-          <input type="text" id="invoiceNumber" placeholder="2025-001">
-        </label>
-        <label>
-          Date
-          <input type="date" id="invoiceDate">
-        </label>
-        <label>
-          Terms
-          <input type="text" id="invoiceTerms" placeholder="Net 15">
-        </label>
-      </div>
-    </header>
-
-    <section class="party-blocks">
-      <div class="party">
-        <h2>From</h2>
-        <p><strong>Signal Network Services</strong></p>
-        <textarea id="fromBlock" rows="4">Your Name
-City, State
-Phone
-Email</textarea>
-      </div>
-      <div class="party">
-        <h2>Bill To</h2>
-        <textarea id="billToBlock" rows="5" placeholder="Client name&#10;Address&#10;City, State ZIP&#10;Email / Phone"></textarea>
+      <div class="hero-card">
+        <h3>Perfect for:</h3>
+        <ul>
+          <li>Offices with messy server closets</li>
+          <li>Law firms, clinics, agencies</li>
+          <li>Warehouses and light industrial spaces</li>
+          <li>Any SMB that inherited “mystery cabling”</li>
+        </ul>
       </div>
     </section>
 
-    <section class="items-section">
-      <h2>Services</h2>
-      <table class="items-table">
-        <thead>
-          <tr>
-            <th style="width: 40%;">Description</th>
-            <th style="width: 10%;">Qty</th>
-            <th style="width: 15%;">Rate</th>
-            <th style="width: 15%;">Line Total</th>
-            <th class="no-print" style="width: 10%;"></th>
-          </tr>
-        </thead>
-        <tbody id="itemsBody">
-          <tr class="item-row">
-            <td><input type="text" class="desc" placeholder="Cable cleanup & rack organization"></td>
-            <td><input type="number" class="qty" min="0" step="1" value="1"></td>
-            <td><input type="number" class="rate" min="0" step="0.01" value="400"></td>
-            <td class="line-total">$0.00</td>
-            <td class="no-print">
-              <button type="button" class="btn-icon" onclick="removeRow(this)">✕</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="items-actions no-print">
-        <button type="button" onclick="addRow()">+ Add Line Item</button>
-        <button type="button" class="secondary" onclick="recalcTotals()">Recalculate</button>
+    <section id="services" class="panel">
+      <h2>Core Services</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Rack Cleanup & Cable Management</h3>
+          <p>We straighten, re‑route, and dress your cabling so the rack is clean, serviceable, and safe.</p>
+          <ul>
+            <li>Remove dead/unused cables</li>
+            <li>Replace damaged patch cords</li>
+            <li>Bundle and dress cables</li>
+          </ul>
+          <p class="meta">Typical: 2–5 hours · $750–$2,000 per rack</p>
+        </article>
+
+        <article class="card">
+          <h3>Labeling & Documentation</h3>
+          <p>Every port, cable, and jack gets a clear label and a matching diagram so nothing is a mystery.</p>
+          <ul>
+            <li>Port and jack labels</li>
+            <li>Rack and room diagrams</li>
+            <li>Device & VLAN inventory</li>
+          </ul>
+          <p class="meta">Typical: 2–4 hours · $400–$1,200</p>
+        </article>
+
+        <article class="card">
+          <h3>Copper Testing & Troubleshooting</h3>
+          <p>We identify bad runs, mis‑terminations, and mystery drops using professional test gear.</p>
+          <ul>
+            <li>Cat5e / Cat6 / Cat6A</li>
+            <li>Tone & trace unknown cabling</li>
+            <li>Document good / bad runs</li>
+          </ul>
+          <p class="meta">Typical: 20–80 runs · $15–$25 per run</p>
+        </article>
+
+        <article class="card">
+          <h3>Wi‑Fi Optimization</h3>
+          <p>We improve coverage and reliability for offices, shops, and light industrial spaces.</p>
+          <ul>
+            <li>AP placement review</li>
+            <li>Channel & power tuning</li>
+            <li>Basic heat‑map style checks</li>
+          </ul>
+          <p class="meta">Typical: 1–2 hours · $300–$800</p>
+        </article>
       </div>
     </section>
 
-    <section class="summary-notes">
-      <div class="notes">
-        <h3>Notes</h3>
-        <textarea id="invoiceNotes" rows="4" placeholder="Thank you for your business. Please remit payment by the due date."></textarea>
-      </div>
-      <div class="totals">
-        <div class="totals-row">
-          <span>Subtotal</span>
-          <span id="subtotal">$0.00</span>
+    <section id="quote" class="panel muted">
+      <h2>Ballpark Quote Estimator</h2>
+      <p class="intro">
+        This tool gives a rough estimate only. Final pricing is confirmed after a short on‑site or video assessment.
+      </p>
+      <div class="quote-grid">
+        <div class="quote-form">
+          <label>
+            Number of racks to clean
+            <input type="number" id="racks" min="0" value="1" />
+          </label>
+          <label>
+            Approx. copper runs to test
+            <input type="number" id="copper" min="0" value="24" />
+          </label>
+          <label>
+            Label & document all cabling?
+            <select id="labelDoc">
+              <option value="0">No</option>
+              <option value="1">Yes</option>
+            </select>
+          </label>
+          <label>
+            Wi‑Fi optimization included?
+            <select id="wifi">
+              <option value="0">No</option>
+              <option value="1">Yes</option>
+            </select>
+          </label>
+          <label>
+            Travel distance from Manchester, NH (miles)
+            <input type="number" id="miles" min="0" value="10" />
+          </label>
+          <button class="btn primary" type="button" onclick="calculateQuote()">Calculate estimate</button>
         </div>
-        <div class="totals-row">
-          <span>Tax / Fees</span>
-          <input type="number" id="extraFees" step="0.01" value="0">
-        </div>
-        <div class="totals-row grand">
-          <span>Total</span>
-          <span id="grandTotal">$0.00</span>
+        <div class="quote-result" id="quoteResult">
+          <h3>Estimated Project Range</h3>
+          <p>Fill in the form to see a ballpark range.</p>
         </div>
       </div>
     </section>
 
-    <section class="no-print actions-footer">
-      <button type="button" onclick="window.print()">Print / Save as PDF</button>
-      <p class="hint">Use your browser's print dialog and choose <strong>"Save as PDF"</strong> to generate a PDF invoice.</p>
+    <section id="process" class="panel">
+      <h2>How a Typical Project Works</h2>
+      <ol class="process-list">
+        <li><strong>Discovery Call</strong> – 10–15 minutes to understand your environment and pain points.</li>
+        <li><strong>On‑Site Walkthrough</strong> – Quick inspection of the rack, wiring, and Wi‑Fi coverage.</li>
+        <li><strong>Written Estimate</strong> – Clear scope, pricing range, and expected hours.</li>
+        <li><strong>Cleanup & Testing</strong> – We execute the plan with minimal disruption.</li>
+        <li><strong>Documentation Hand‑Off</strong> – You receive diagrams, port maps, and notes in PDF.</li>
+      </ol>
     </section>
-  </div>
+
+    <section id="contact" class="panel contact">
+      <h2>Request an Assessment</h2>
+      <p>
+        Send an email with a few photos of your rack or server closet, and we’ll provide a
+        quick ballpark plus recommended next steps.
+      </p>
+      <div class="contact-card">
+        <p><strong>Summit Network Services</strong></p>
+        <p>Email: <span>you@example.com</span></p>
+        <p>Service area: Southern & Central New Hampshire, Greater Boston corridor</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2025 Summit Network Services · Network cleanup, cable management & diagnostics</p>
+  </footer>
 </body>
 </html>
