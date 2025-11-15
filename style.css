@@ -1,0 +1,11 @@
+body { font-family: Arial, sans-serif; background:#0e0e11; color:#eaeaea; margin:0; padding:0; }
+header { background:#1a1a1f; padding:20px; text-align:center; border-bottom:2px solid #333; }
+.hero { padding:30px; text-align:center; background:#151519; }
+.services, .quote { padding:20px 40px; }
+h1, h2 { color:#6bb6ff; }
+ul li { margin:8px 0; }
+form { display:flex; flex-direction:column; max-width:300px; }
+input { margin-bottom:10px; padding:6px; border-radius:4px; border:1px solid #444; background:#202029; color:#eee; }
+button { background:#6bb6ff; padding:10px; border:none; border-radius:4px; cursor:pointer; color:#000; font-weight:bold; }
+pre { background:#111; padding:10px; border:1px solid #444; white-space:pre-wrap; }
+footer { text-align:center; padding:20px; border-top:1px solid #333; background:#1a1a1f; }

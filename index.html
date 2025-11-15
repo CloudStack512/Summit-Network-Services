@@ -1,165 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Summit Network Services</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="styles.css" />
-  <script defer src="main.js"></script>
+<meta charset="UTF-8">
+<title>Summit Network Services</title>
+<link rel="stylesheet" href="style.css">
+<script src="quote.js" defer></script>
 </head>
 <body>
-  <header class="topbar">
-    <div class="logo-mark"></div>
-    <div class="brand-block">
-      <h1>Summit Network Services</h1>
-      <p class="tagline">Clean, reliable networks for small and mid-sized businesses.</p>
-    </div>
-    <a href="#contact" class="btn primary desktop-only">Request an Assessment</a>
-  </header>
+<header>
+  <h1>Summit Network Services</h1>
+  <p>Structured Cabling • Network Cleanup • Testing & Documentation</p>
+</header>
 
-  <main>
-    <section class="hero">
-      <div class="hero-content">
-        <h2>Turn your spaghetti rack into a clean, documented network.</h2>
-        <p>
-          Summit Network Services specializes in rack cleanup, cable management, labeling,
-          testing, and Wi‑Fi optimization. No construction, no chaos—just calm, organized
-          infrastructure you can actually understand.
-        </p>
-        <div class="hero-actions">
-          <a href="#quote" class="btn primary">Get an instant ballpark quote</a>
-          <a href="#services" class="btn ghost">View services</a>
-        </div>
-      </div>
-      <div class="hero-card">
-        <h3>Perfect for:</h3>
-        <ul>
-          <li>Offices with messy server closets</li>
-          <li>Law firms, clinics, agencies</li>
-          <li>Warehouses and light industrial spaces</li>
-          <li>Any SMB that inherited “mystery cabling”</li>
-        </ul>
-      </div>
-    </section>
+<section class="hero">
+  <h2>Clean. Documented. Reliable.</h2>
+  <p>Professional network cleanup, cable management, labeling, testing, and small‑business WiFi optimization.</p>
+</section>
 
-    <section id="services" class="panel">
-      <h2>Core Services</h2>
-      <div class="cards">
-        <article class="card">
-          <h3>Rack Cleanup & Cable Management</h3>
-          <p>We straighten, re‑route, and dress your cabling so the rack is clean, serviceable, and safe.</p>
-          <ul>
-            <li>Remove dead/unused cables</li>
-            <li>Replace damaged patch cords</li>
-            <li>Bundle and dress cables</li>
-          </ul>
-          <p class="meta">Typical: 2–5 hours · $750–$2,000 per rack</p>
-        </article>
+<section class="services">
+  <h2>Services</h2>
+  <ul>
+    <li>Cable Management & Rack Cleanup</li>
+    <li>Copper Termination & Testing</li>
+    <li>Fiber Testing (optional add‑on)</li>
+    <li>Network Mapping & Documentation</li>
+    <li>SMB WiFi Optimization & Access Point Setup</li>
+  </ul>
+</section>
 
-        <article class="card">
-          <h3>Labeling & Documentation</h3>
-          <p>Every port, cable, and jack gets a clear label and a matching diagram so nothing is a mystery.</p>
-          <ul>
-            <li>Port and jack labels</li>
-            <li>Rack and room diagrams</li>
-            <li>Device & VLAN inventory</li>
-          </ul>
-          <p class="meta">Typical: 2–4 hours · $400–$1,200</p>
-        </article>
+<section class="quote">
+  <h2>Instant Quote Estimate</h2>
+  <form id="quoteForm">
+    <label>Copper Runs to Test:</label>
+    <input type="number" id="copper" min="0" value="0">
 
-        <article class="card">
-          <h3>Copper Testing & Troubleshooting</h3>
-          <p>We identify bad runs, mis‑terminations, and mystery drops using professional test gear.</p>
-          <ul>
-            <li>Cat5e / Cat6 / Cat6A</li>
-            <li>Tone & trace unknown cabling</li>
-            <li>Document good / bad runs</li>
-          </ul>
-          <p class="meta">Typical: 20–80 runs · $15–$25 per run</p>
-        </article>
+    <label>New Terminations Needed:</label>
+    <input type="number" id="terms" min="0" value="0">
 
-        <article class="card">
-          <h3>Wi‑Fi Optimization</h3>
-          <p>We improve coverage and reliability for offices, shops, and light industrial spaces.</p>
-          <ul>
-            <li>AP placement review</li>
-            <li>Channel & power tuning</li>
-            <li>Basic heat‑map style checks</li>
-          </ul>
-          <p class="meta">Typical: 1–2 hours · $300–$800</p>
-        </article>
-      </div>
-    </section>
+    <label>Approx Distance (miles):</label>
+    <input type="number" id="distance" min="0" value="0">
 
-    <section id="quote" class="panel muted">
-      <h2>Ballpark Quote Estimator</h2>
-      <p class="intro">
-        This tool gives a rough estimate only. Final pricing is confirmed after a short on‑site or video assessment.
-      </p>
-      <div class="quote-grid">
-        <div class="quote-form">
-          <label>
-            Number of racks to clean
-            <input type="number" id="racks" min="0" value="1" />
-          </label>
-          <label>
-            Approx. copper runs to test
-            <input type="number" id="copper" min="0" value="24" />
-          </label>
-          <label>
-            Label & document all cabling?
-            <select id="labelDoc">
-              <option value="0">No</option>
-              <option value="1">Yes</option>
-            </select>
-          </label>
-          <label>
-            Wi‑Fi optimization included?
-            <select id="wifi">
-              <option value="0">No</option>
-              <option value="1">Yes</option>
-            </select>
-          </label>
-          <label>
-            Travel distance from Manchester, NH (miles)
-            <input type="number" id="miles" min="0" value="10" />
-          </label>
-          <button class="btn primary" type="button" onclick="calculateQuote()">Calculate estimate</button>
-        </div>
-        <div class="quote-result" id="quoteResult">
-          <h3>Estimated Project Range</h3>
-          <p>Fill in the form to see a ballpark range.</p>
-        </div>
-      </div>
-    </section>
+    <button type="button" onclick="generateQuote()">Generate Quote</button>
+  </form>
 
-    <section id="process" class="panel">
-      <h2>How a Typical Project Works</h2>
-      <ol class="process-list">
-        <li><strong>Discovery Call</strong> – 10–15 minutes to understand your environment and pain points.</li>
-        <li><strong>On‑Site Walkthrough</strong> – Quick inspection of the rack, wiring, and Wi‑Fi coverage.</li>
-        <li><strong>Written Estimate</strong> – Clear scope, pricing range, and expected hours.</li>
-        <li><strong>Cleanup & Testing</strong> – We execute the plan with minimal disruption.</li>
-        <li><strong>Documentation Hand‑Off</strong> – You receive diagrams, port maps, and notes in PDF.</li>
-      </ol>
-    </section>
+  <pre id="quoteResult"></pre>
+</section>
 
-    <section id="contact" class="panel contact">
-      <h2>Request an Assessment</h2>
-      <p>
-        Send an email with a few photos of your rack or server closet, and we’ll provide a
-        quick ballpark plus recommended next steps.
-      </p>
-      <div class="contact-card">
-        <p><strong>Summit Network Services</strong></p>
-        <p>Email: <span>you@example.com</span></p>
-        <p>Service area: Southern & Central New Hampshire, Greater Boston corridor</p>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <p>© 2025 Summit Network Services · Network cleanup, cable management & diagnostics</p>
-  </footer>
+<footer>
+  <p>© 2025 Summit Network Services</p>
+</footer>
 </body>
 </html>
