@@ -354,6 +354,7 @@ textarea {
   background: radial-gradient(circle at top left, #02081a, #020617);
   color: var(--text-main);
   padding: 11px 13px;
+  margin: 11px 13px;
   font-size: 0.95rem;
   outline: none;
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast),
@@ -363,6 +364,7 @@ textarea {
 textarea {
   border-radius: 12px;
   min-height: 110px;
+  margin: 11px 13px;
   resize: vertical;
 }
 
