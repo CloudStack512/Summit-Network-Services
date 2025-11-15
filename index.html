@@ -1,44 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Summit Network Services</title>
-<link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Summit Network Services</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<header class="hero">
-<img src="logo.png" class="logo"/>
-<h1>Summit Network Services</h1>
-<p class="subtitle">Professional • Reliable • Network Infrastructure Services</p>
-</header>
+  <header class="top-nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <img src="logo.png" alt="Summit Network Services logo" class="logo" />
+        <span class="brand-name">Summit Network Services</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-<section id="services" class="section">
-<h2>Our Services</h2>
-<ul>
-<li>Cable Cleanup & Rack Organization — $400–$800 per rack</li>
-<li>Copper Cable Testing & Certification — $20–$35 per run</li>
-<li>Copper Termination — $25–$45 per termination</li>
-<li>Small Network Cleanup Package — $500–$750</li>
-<li>Wi-Fi Optimization & Testing — $200–$350</li>
-<li>Network Documentation Package — $250–$450</li>
-<li>Travel — $35 local / $1.25 per mile</li>
-</ul>
-</section>
+  <section class="hero" id="top">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <h1>Clean. Documented. Reliable Networks.</h1>
+        <p>Summit Network Services provides expert copper network cleanup, testing, and documentation for small and mid-sized businesses.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn primary">Request a Callback</a>
+          <a href="#services" class="btn ghost">View Services & Pricing</a>
+        </div>
+        <p class="hero-note">Serving New England businesses with professional, on-site network services.</p>
+      </div>
+    </div>
+  </section>
 
-<section id="contact" class="section contact-section">
-<h2>Contact Us</h2>
-<form id="contactForm" class="contact-form">
-<input type="text" id="name" placeholder="Your Name" required />
-<input type="email" id="email" placeholder="Email" required />
-<textarea id="message" placeholder="Message" rows="5" required></textarea>
-<button type="submit" class="cta-btn">Send</button>
-<p id="formStatus"></p>
-</form>
-</section>
+  <main>
+    <section id="about" class="section about">
+      <div class="section-inner">
+        <h2>About Summit Network Services</h2>
+        <p>
+          Summit Network Services specializes in cleaning up messy network rooms, testing and certifying copper cabling, and delivering clear, 
+          usable documentation so business owners and IT teams always know what’s plugged in where.
+        </p>
+        <p>
+          Whether you’re dealing with a spaghetti rack, unlabeled jacks, or mystery cables, we bring structure, reliability, and clarity to your 
+          physical network infrastructure.
+        </p>
+      </div>
+    </section>
 
-<footer><p>© 2025 Summit Network Services</p></footer>
+    <section id="services" class="section services">
+      <div class="section-inner">
+        <h2>Services & Pricing</h2>
+        <p class="section-subtitle">Transparent pricing and clean, professional results.</p>
+        <div class="cards-grid">
 
-<script src="script.js"></script>
+          <article class="card">
+            <h3>Cable Cleanup & Rack Organization</h3>
+            <p class="price">$400–$800 per rack</p>
+            <p class="card-text">
+              Remove dead cables, untangle and dress patch cords, route cables cleanly, and restore order to your network rack or cabinet.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Copper Cable Testing & Certification</h3>
+            <p class="price">$20–$35 per run</p>
+            <p class="card-text">
+              Test and document Cat5e/Cat6/Cat6A runs with pass/fail reporting so you know exactly which drops are healthy and which need attention.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Copper Termination</h3>
+            <p class="price">$25–$45 per termination</p>
+            <p class="card-text">
+              Professional jack and patch panel terminations using industry-standard pinouts, labeled and verified with a tester.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Small Network Cleanup Package</h3>
+            <p class="price">$500–$750 flat</p>
+            <p class="card-text">
+              Ideal for single-closet environments. Includes rack cleanup, testing of key runs, and labeling of critical ports and cables.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Wi‑Fi Optimization & Testing</h3>
+            <p class="price">$200–$350</p>
+            <p class="card-text">
+              Evaluate placement, interference, and coverage for your wireless network and provide recommendations for better performance.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Network Documentation Package</h3>
+            <p class="price">$250–$450</p>
+            <p class="card-text">
+              Port maps, device inventory, cable labeling schema, and photos of before/after work so you always have a clear reference.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Travel</h3>
+            <p class="price">$35 local • $1.25/mi extended</p>
+            <p class="card-text">
+              Local travel is flat-rate within 50 miles. For extended travel, mileage is billed at a fair, transparent rate.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="process" class="section process">
+      <div class="section-inner">
+        <h2>How It Works</h2>
+        <div class="steps-grid">
+          <div class="step">
+            <span class="step-number">1</span>
+            <h3>Initial Call & Photos</h3>
+            <p>We discuss your environment and you send a few photos of your rack or network room for a quick assessment.</p>
+          </div>
+          <div class="step">
+            <span class="step-number">2</span>
+            <h3>On‑Site Visit</h3>
+            <p>We perform cleanup, testing, terminations, and documentation based on your selected services.</p>
+          </div>
+          <div class="step">
+            <span class="step-number">3</span>
+            <h3>Delivered Documentation</h3>
+            <p>You receive a simple, clear summary of work completed and network diagrams or port maps where applicable.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact">
+      <div class="section-inner">
+        <h2>Request a Callback</h2>
+        <p class="section-subtitle">Share a few details and we’ll follow up to discuss your project.</p>
+        <form id="contactForm" class="contact-form">
+          <div class="form-row">
+            <input type="text" id="name" name="name" placeholder="Your Name" required />
+            <input type="email" id="email" name="email" placeholder="Email Address" required />
+          </div>
+          <input type="text" id="company" name="company" placeholder="Company / Organization (optional)" />
+          <textarea id="message" name="message" rows="4" placeholder="Briefly describe your environment or issue..." required></textarea>
+          <button type="submit" class="btn primary full-width">Send Message</button>
+          <p id="formStatus" class="form-status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 Summit Network Services. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
