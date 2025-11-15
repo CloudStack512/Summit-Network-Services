@@ -1,268 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Signal Network Services</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Summit Network Services</title>
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<header class="topnav">
-    <div class="brand">
-        <div class="logo-dot"><img src="./39E8F1BD-16D9-4500-8E92-98329351A037.png"></div>
-        <div class="brand-text">
-            <span class="brand-name">Signal Network Services</span>
-            <span class="brand-tagline">Network cleanup • Cabling • Wi‑Fi</span>
-        </div>
-    </div>
-    <nav class="nav-links">
-        <a href="#services">Services</a>
-        <a href="#how-it-works">How it works</a>
-        <a href="#quote">Quote</a>
-        <a href="#contact">Contact</a>
-    </nav>
+<header class="hero">
+<img src="logo.png" class="logo"/>
+<h1>Summit Network Services</h1>
+<p class="subtitle">Professional • Reliable • Network Infrastructure Services</p>
 </header>
 
-<section class="hero" id="top">
-    <div class="hero-main">
-        <p class="eyebrow">Network cleanup &amp; documentation for real‑world businesses</p>
-        <h1>Turn your spaghetti rack into a clean, documented network.</h1>
-        <p class="hero-copy">
-            Signal Network Services helps small and mid‑sized businesses fix messy network closets,
-            unlabeled cabling, slow Wi‑Fi, and “no one knows what this does” problems.
-        </p>
-        <div class="hero-actions">
-            <a href="#quote" class="btn primary">Get an instant estimate</a>
-            <a href="#services" class="btn ghost">View services &amp; pricing</a>
-        </div>
-        <p class="hero-footnote">
-            Typical small business projects: <strong>$700–$1,600</strong> depending on scope.
-        </p>
-    </div>
-    <div class="hero-card">
-        <h2>Perfect for:</h2>
-        <ul>
-            <li>Offices with messy racks &amp; mystery cables</li>
-            <li>Clinics, law firms, agencies, and warehouses</li>
-            <li>Businesses without in‑house cabling staff</li>
-        </ul>
-        <div class="hero-badge">
-            <span class="badge-label">Service area</span>
-            <span>NH • MA • Southern ME</span>
-        </div>
-    </div>
+<section id="services" class="section">
+<h2>Our Services</h2>
+<ul>
+<li>Cable Cleanup & Rack Organization — $400–$800 per rack</li>
+<li>Copper Cable Testing & Certification — $20–$35 per run</li>
+<li>Copper Termination — $25–$45 per termination</li>
+<li>Small Network Cleanup Package — $500–$750</li>
+<li>Wi-Fi Optimization & Testing — $200–$350</li>
+<li>Network Documentation Package — $250–$450</li>
+<li>Travel — $35 local / $1.25 per mile</li>
+</ul>
 </section>
 
-<section class="section" id="why-us">
-    <h2>Why work with Signal?</h2>
-    <div class="cards-grid">
-        <article class="card">
-            <h3>Clean &amp; labeled</h3>
-            <p>We don’t just “make it work” — we make it understandable. Cleanly dressed cabling with clear labels so future changes are easy.</p>
-        </article>
-        <article class="card">
-            <h3>Tested &amp; verified</h3>
-            <p>Professional copper testing validates performance so you know which runs are actually good instead of just guessing.</p>
-        </article>
-        <article class="card">
-            <h3>Plain‑English docs</h3>
-            <p>Network maps, port lists, and diagrams explained in non‑jargon so owners and office managers can follow along.</p>
-        </article>
-        <article class="card">
-            <h3>Transparent pricing</h3>
-            <p>Flat pricing by rack, run, and package. No surprise fees, no mystery labor charges, and clear estimates up front.</p>
-        </article>
-    </div>
+<section id="contact" class="section contact-section">
+<h2>Contact Us</h2>
+<form id="contactForm" class="contact-form">
+<input type="text" id="name" placeholder="Your Name" required />
+<input type="email" id="email" placeholder="Email" required />
+<textarea id="message" placeholder="Message" rows="5" required></textarea>
+<button type="submit" class="cta-btn">Send</button>
+<p id="formStatus"></p>
+</form>
 </section>
 
-<section class="section" id="services">
-    <h2>Services &amp; pricing</h2>
-    <div class="service-grid">
-        <article class="service-card">
-            <h3>Cable cleanup &amp; rack organization</h3>
-            <p class="price">$400–$800 per rack</p>
-            <p class="meta">2–4 hours typical</p>
-            <ul>
-                <li>Cable dressing &amp; re‑routing</li>
-                <li>Labeling active connections</li>
-                <li>Removal of abandoned/unused cabling</li>
-            </ul>
-        </article>
-        <article class="service-card">
-            <h3>Copper cable testing &amp; certification</h3>
-            <p class="price">$20–$35 per run</p>
-            <p class="meta">1–3 minutes per cable</p>
-            <ul>
-                <li>Cat5e / Cat6 / Cat6A</li>
-                <li>Pass/fail test results</li>
-                <li>Summary included in documentation</li>
-            </ul>
-        </article>
-        <article class="service-card">
-            <h3>Copper termination (jacks &amp; patch panels)</h3>
-            <p class="price">$25–$45 per termination</p>
-            <p class="meta">5–10 minutes each</p>
-            <ul>
-                <li>Punch‑down &amp; keystone terminations</li>
-                <li>Verification testing</li>
-                <li>Port and jack labeling</li>
-            </ul>
-        </article>
-        <article class="service-card">
-            <h3>Small network cleanup package</h3>
-            <p class="price">$500–$750 flat</p>
-            <p class="meta">3–5 hours</p>
-            <ul>
-                <li>1 rack cleanup</li>
-                <li>Labeling of active connections</li>
-                <li>Testing of agreed‑upon runs</li>
-            </ul>
-        </article>
-        <article class="service-card">
-            <h3>Wi‑Fi optimization &amp; testing</h3>
-            <p class="price">$200–$350</p>
-            <p class="meta">1–2 hours</p>
-            <ul>
-                <li>Coverage &amp; interference checks</li>
-                <li>Channel &amp; power recommendations</li>
-                <li>Basic AP placement guidance</li>
-            </ul>
-        </article>
-        <article class="service-card">
-            <h3>Network documentation package</h3>
-            <p class="price">$250–$450</p>
-            <p class="meta">2–4 hours</p>
-            <ul>
-                <li>Wiring &amp; port maps</li>
-                <li>Labeling scheme overview</li>
-                <li>Device &amp; connection inventory</li>
-            </ul>
-        </article>
-        <article class="service-card">
-            <h3>Travel &amp; on‑site</h3>
-            <p class="price">$35 local / $1.25 per mile</p>
-            <p class="meta">Local: ~50 miles radius</p>
-            <ul>
-                <li>Local travel flat fee</li>
-                <li>Extended mileage billed per mile</li>
-            </ul>
-        </article>
-    </div>
-    <div class="note-block">
-        <p><strong>Payment terms:</strong> Net 15 · <strong>Deposit:</strong> only on jobs over $1,500.</p>
-        <p><strong>Typical small business total:</strong> $700–$1,600 depending on scope.</p>
-    </div>
-</section>
+<footer><p>© 2025 Summit Network Services</p></footer>
 
-<section class="section" id="how-it-works">
-    <h2>How a typical project works</h2>
-    <ol class="steps">
-        <li><strong>Quick call or email.</strong> You describe the current setup and text or email a few photos of your rack/closet.</li>
-        <li><strong>Rough estimate.</strong> We provide a ballpark based on number of racks, runs, and services needed.</li>
-        <li><strong>On‑site visit.</strong> We confirm scope, finalize the quote, and schedule the work.</li>
-        <li><strong>Cleanup &amp; testing.</strong> We perform the agreed services with minimal disruption to your team.</li>
-        <li><strong>Documentation delivery.</strong> You receive a simple PDF packet summarizing what was done and how everything is labeled.</li>
-    </ol>
-</section>
-
-<section class="section section-alt" id="quote">
-    <div class="section-header">
-        <h2>Instant quote builder</h2>
-        <p>Use this tool to get a planning estimate. Final pricing is confirmed after a brief scope review.</p>
-    </div>
-    <div class="split">
-        <form class="form" onsubmit="event.preventDefault(); generateQuote();">
-            <label for="clientName">Client name</label>
-            <input id="clientName" type="text" placeholder="Acme Dental Clinic" />
-
-            <label for="siteLocation">Site location</label>
-            <input id="siteLocation" type="text" placeholder="Boston, MA" />
-
-            <label for="fiberRuns">Fiber runs (if any)</label>
-            <input id="fiberRuns" type="number" min="0" value="0" />
-
-            <label for="copperRuns">Copper runs to test</label>
-            <input id="copperRuns" type="number" min="0" value="24" />
-
-            <label for="miles">Miles beyond local radius (~50 miles)</label>
-            <input id="miles" type="number" min="0" value="0" />
-
-            <button type="submit" class="btn primary full">Generate estimate</button>
-        </form>
-        <pre id="quoteOutput" class="output">
-Fill out the form to see an estimate here.
-        </pre>
-    </div>
-</section>
-
-<section class="section" id="invoice">
-    <div class="section-header">
-        <h2>Invoice generator</h2>
-        <p>After a job is complete, use this to generate a simple PDF invoice.</p>
-    </div>
-    <div class="split">
-        <form class="form" onsubmit="event.preventDefault(); generateInvoice();">
-            <label for="invoiceNumber">Invoice number</label>
-            <input id="invoiceNumber" type="text" placeholder="SNS-0001" />
-
-            <label for="invoiceClient">Client name</label>
-            <input id="invoiceClient" type="text" placeholder="Acme Dental Clinic" />
-
-            <label for="invoiceTotal">Total amount (USD)</label>
-            <input id="invoiceTotal" type="number" step="0.01" placeholder="950.00" />
-
-            <button type="submit" class="btn primary full">Generate invoice PDF</button>
-            <a id="invoiceDownload" style="display:none;" download="invoice.pdf">Download invoice</a>
-        </form>
-        <div class="output output-note">
-            <h3>What’s included on the invoice</h3>
-            <ul>
-                <li>Business name: Signal Network Services</li>
-                <li>Invoice number &amp; client name</li>
-                <li>Total amount due</li>
-                <li>Payment terms: Net 15</li>
-            </ul>
-            <p>You can attach the PDF to an email or upload it into your accounting software.</p>
-        </div>
-    </div>
-</section>
-
-<section class="section section-alt" id="contact">
-    <h2>Contact &amp; service area</h2>
-    <div class="contact-grid">
-        <div>
-            <p><strong>Email:</strong> info@signalnetworks.com</p>
-            <p><strong>Phone:</strong> (603) 555‑2913</p>
-            <p><strong>Service area:</strong> Southern New Hampshire, Northeastern Massachusetts, Southern Maine</p>
-            <p><strong>Typical hours:</strong> Monday–Friday, 8:00 AM – 5:00 PM</p>
-            <p class="small-note">Evening or weekend work available by request on certain projects.</p>
-        </div>
-        <form class="form contact-form">
-            <label for="contactName">Name</label>
-            <input id="contactName" type="text" placeholder="Your name" />
-
-            <label for="contactEmail">Email</label>
-            <input id="contactEmail" type="email" placeholder="you@example.com" />
-
-            <label for="contactMessage">Project details</label>
-            <textarea id="contactMessage" rows="4" placeholder="Briefly describe your current setup and what you’d like help with."></textarea>
-
-            <button type="button" class="btn ghost full" disabled>
-                Email form coming soon – for now, just copy this into your email client.
-            </button>
-        </form>
-    </div>
-</section>
-
-<footer class="footer">
-    <p>© 2025 Signal Network Services · Network cleanup, cabling, and Wi‑Fi optimization</p>
-</footer>
-
-<script src="quote.js"></script>
-<script src="invoice.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
