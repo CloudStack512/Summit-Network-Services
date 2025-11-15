@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Signal Network Services – Invoice Generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="invoice.js" defer></script>
+</head>
+<body>
+  <div class="page">
+    <header class="invoice-header">
+      <div class="brand">
+        <div class="logo-dot"></div>
+        <div>
+          <h1>Signal Network Services</h1>
+          <p>Cable Cleanup • Labeling • Testing • WiFi Optimization</p>
+        </div>
+      </div>
+      <div class="invoice-meta">
+        <label>
+          Invoice #
+          <input type="text" id="invoiceNumber" placeholder="2025-001">
+        </label>
+        <label>
+          Date
+          <input type="date" id="invoiceDate">
+        </label>
+        <label>
+          Terms
+          <input type="text" id="invoiceTerms" placeholder="Net 15">
+        </label>
+      </div>
+    </header>
+
+    <section class="party-blocks">
+      <div class="party">
+        <h2>From</h2>
+        <p><strong>Signal Network Services</strong></p>
+        <textarea id="fromBlock" rows="4">Your Name
+City, State
+Phone
+Email</textarea>
+      </div>
+      <div class="party">
+        <h2>Bill To</h2>
+        <textarea id="billToBlock" rows="5" placeholder="Client name&#10;Address&#10;City, State ZIP&#10;Email / Phone"></textarea>
+      </div>
+    </section>
+
+    <section class="items-section">
+      <h2>Services</h2>
+      <table class="items-table">
+        <thead>
+          <tr>
+            <th style="width: 40%;">Description</th>
+            <th style="width: 10%;">Qty</th>
+            <th style="width: 15%;">Rate</th>
+            <th style="width: 15%;">Line Total</th>
+            <th class="no-print" style="width: 10%;"></th>
+          </tr>
+        </thead>
+        <tbody id="itemsBody">
+          <tr class="item-row">
+            <td><input type="text" class="desc" placeholder="Cable cleanup & rack organization"></td>
+            <td><input type="number" class="qty" min="0" step="1" value="1"></td>
+            <td><input type="number" class="rate" min="0" step="0.01" value="400"></td>
+            <td class="line-total">$0.00</td>
+            <td class="no-print">
+              <button type="button" class="btn-icon" onclick="removeRow(this)">✕</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="items-actions no-print">
+        <button type="button" onclick="addRow()">+ Add Line Item</button>
+        <button type="button" class="secondary" onclick="recalcTotals()">Recalculate</button>
+      </div>
+    </section>
+
+    <section class="summary-notes">
+      <div class="notes">
+        <h3>Notes</h3>
+        <textarea id="invoiceNotes" rows="4" placeholder="Thank you for your business. Please remit payment by the due date."></textarea>
+      </div>
+      <div class="totals">
+        <div class="totals-row">
+          <span>Subtotal</span>
+          <span id="subtotal">$0.00</span>
+        </div>
+        <div class="totals-row">
+          <span>Tax / Fees</span>
+          <input type="number" id="extraFees" step="0.01" value="0">
+        </div>
+        <div class="totals-row grand">
+          <span>Total</span>
+          <span id="grandTotal">$0.00</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="no-print actions-footer">
+      <button type="button" onclick="window.print()">Print / Save as PDF</button>
+      <p class="hint">Use your browser's print dialog and choose <strong>"Save as PDF"</strong> to generate a PDF invoice.</p>
+    </section>
+  </div>
+</body>
+</html>

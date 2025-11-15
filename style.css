@@ -1,0 +1,266 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 16px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #101117;
+  color: #111320;
+}
+
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 8px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.45);
+}
+
+.invoice-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  border-bottom: 2px solid #e3e6f0;
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+}
+
+.brand {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.logo-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 20%, #ffffff, #4fc3f7 40%, #0070b3 80%);
+  box-shadow: 0 0 18px rgba(79,195,247,0.7);
+}
+
+.invoice-header h1 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.invoice-header p {
+  margin: 4px 0 0;
+  font-size: 0.85rem;
+  color: #5f6470;
+}
+
+.invoice-meta {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.4rem;
+  min-width: 220px;
+}
+
+.invoice-meta label {
+  font-size: 0.8rem;
+  color: #33374a;
+  display: flex;
+  flex-direction: column;
+}
+
+.invoice-meta input {
+  margin-top: 2px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  border: 1px solid #c5cadb;
+  font-size: 0.85rem;
+}
+
+/* Parties */
+
+.party-blocks {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 20px;
+}
+
+.party {
+  flex: 1;
+}
+
+.party h2 {
+  margin: 0 0 4px;
+  font-size: 0.95rem;
+}
+
+.party textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #c5cadb;
+  font-size: 0.9rem;
+  resize: vertical;
+}
+
+/* Items table */
+
+.items-section h2 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.items-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.items-table th,
+.items-table td {
+  border: 1px solid #dde0ee;
+  padding: 6px 8px;
+}
+
+.items-table th {
+  background: #f3f5fc;
+  text-align: left;
+  font-size: 0.8rem;
+  color: #414763;
+}
+
+.items-table input {
+  width: 100%;
+  border: none;
+  padding: 4px 2px;
+  font-size: 0.88rem;
+}
+
+.items-table input:focus {
+  outline: none;
+}
+
+.line-total {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.btn-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #c0392b;
+  font-size: 1rem;
+}
+
+/* Actions */
+
+.items-actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.items-actions button {
+  padding: 8px 14px;
+  border-radius: 4px;
+  border: 1px solid #0078d7;
+  background: #0078d7;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.items-actions .secondary {
+  background: #ffffff;
+  color: #0078d7;
+}
+
+/* Summary + notes */
+
+.summary-notes {
+  display: flex;
+  gap: 2rem;
+  margin-top: 18px;
+}
+
+.notes {
+  flex: 1.3;
+}
+
+.notes textarea {
+  width: 100%;
+  min-height: 90px;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #c5cadb;
+  font-size: 0.88rem;
+}
+
+.totals {
+  flex: 0.9;
+  border-radius: 6px;
+  border: 1px solid #dde0ee;
+  padding: 10px 12px;
+  background: #f9faff;
+}
+
+.totals-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+}
+
+.totals-row.grand {
+  border-top: 1px solid #dde0ee;
+  padding-top: 6px;
+  font-weight: 600;
+}
+
+#extraFees {
+  width: 90px;
+  text-align: right;
+  padding: 4px 6px;
+  border-radius: 4px;
+  border: 1px solid #c5cadb;
+}
+
+.actions-footer {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.actions-footer button {
+  padding: 10px 18px;
+  border-radius: 4px;
+  border: 1px solid #0078d7;
+  background: #0078d7;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.actions-footer .hint {
+  margin-top: 8px;
+  font-size: 0.8rem;
+  color: #555a6b;
+}
+
+/* Print styles */
+
+@media print {
+  body {
+    padding: 0;
+    background: #ffffff;
+  }
+  .page {
+    box-shadow: none;
+    border-radius: 0;
+    margin: 0;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
