@@ -39,151 +39,153 @@
     .totals-table td { border:none; padding:2px 4px; }
     .totals-label { text-align:right; font-weight:600; width:70%; }
     .totals-value { text-align:right; width:30%; }
-    @media print {.top-actions, button { display:none; }}
+    @media print { .top-actions, button { display:none; } }
   </style>
 </head>
 <body>
   <div class="top-actions">
-    <button onclick="window.print()">Save / Print as PDF</button>
+    <button onclick="generatePDF()">Download PDF</button>
   </div>
 
-  <div class="logo-wrapper">
-    <div class="logo-title">SUMMIT NETWORK SERVICES</div>
-    <div class="logo-box">PLACE LOGO HERE (PNG / SVG)</div>
-  </div>
+  <div id="pdf-area">
+    <div class="logo-wrapper">
+      <div class="logo-title">SUMMIT NETWORK SERVICES</div>
+      <div class="logo-box">PLACE LOGO HERE (PNG / SVG)</div>
+    </div>
 
-  <h2>INVOICE</h2>
+    <h2>INVOICE</h2>
 
-  <div class="section-title">Invoice Details</div>
-  <table>
-    <tr>
-      <td style="width:120px;">Invoice #:</td>
-      <td><input type="text"></td>
-      <td style="width:120px;">Date:</td>
-      <td><input type="text"></td>
-    </tr>
-    <tr>
-      <td>Client Name:</td>
-      <td><input type="text"></td>
-      <td>Business Name:</td>
-      <td><input type="text"></td>
-    </tr>
-    <tr>
-      <td>Address:</td>
-      <td><input type="text"></td>
-      <td>Email:</td>
-      <td><input type="text"></td>
-    </tr>
-    <tr>
-      <td>Phone:</td>
-      <td><input type="text"></td>
-      <td></td>
-      <td></td>
-    </tr>
-  </table>
-
-  <div class="section-title">Services Billed</div>
-  <table id="invoice-services">
-    <thead>
+    <div class="section-title">Invoice Details</div>
+    <table>
       <tr>
-        <th>Service Description</th>
-        <th style="width:60px;">Qty</th>
-        <th style="width:80px;">Unit Price</th>
-        <th style="width:90px;">Line Total</th>
+        <td style="width:120px;">Invoice #:</td>
+        <td><input type="text"></td>
+        <td style="width:120px;">Date:</td>
+        <td><input type="text"></td>
       </tr>
-    </thead>
-    <tbody>
-      <!-- 10 lines -->
+      <tr>
+        <td>Client Name:</td>
+        <td><input type="text"></td>
+        <td>Business Name:</td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td>Address:</td>
+        <td><input type="text"></td>
+        <td>Email:</td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td>Phone:</td>
+        <td><input type="text"></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+
+    <div class="section-title">Services Billed</div>
+    <table id="invoice-services">
+      <thead>
+        <tr>
+          <th>Service Description</th>
+          <th style="width:60px;">Qty</th>
+          <th style="width:80px;">Unit Price</th>
+          <th style="width:90px;">Line Total</th>
+        </tr>
+      </thead>
+      <tbody>
       <tr>
         <td><input type="text" placeholder="e.g. Rack Cleanup (Medium)"></td>
         <td><input type="number" min="0" value="0" oninput="recalcInvoiceTotals()"></td>
         <td><input type="number" min="0" step="0.01" value="0" oninput="recalcInvoiceTotals()"></td>
         <td class="inv-line-total">$0.00</td>
       </tr>
-<tr>
+      <tr>
         <td><input type="text" ></td>
         <td><input type="number" min="0" value="0" oninput="recalcInvoiceTotals()"></td>
         <td><input type="number" min="0" step="0.01" value="0" oninput="recalcInvoiceTotals()"></td>
         <td class="inv-line-total">$0.00</td>
       </tr>
-<tr>
+      <tr>
         <td><input type="text" ></td>
         <td><input type="number" min="0" value="0" oninput="recalcInvoiceTotals()"></td>
         <td><input type="number" min="0" step="0.01" value="0" oninput="recalcInvoiceTotals()"></td>
         <td class="inv-line-total">$0.00</td>
       </tr>
-<tr>
+      <tr>
         <td><input type="text" ></td>
         <td><input type="number" min="0" value="0" oninput="recalcInvoiceTotals()"></td>
         <td><input type="number" min="0" step="0.01" value="0" oninput="recalcInvoiceTotals()"></td>
         <td class="inv-line-total">$0.00</td>
       </tr>
-<tr>
+      <tr>
         <td><input type="text" ></td>
         <td><input type="number" min="0" value="0" oninput="recalcInvoiceTotals()"></td>
         <td><input type="number" min="0" step="0.01" value="0" oninput="recalcInvoiceTotals()"></td>
         <td class="inv-line-total">$0.00</td>
       </tr>
-<tr>
+      <tr>
         <td><input type="text" ></td>
         <td><input type="number" min="0" value="0" oninput="recalcInvoiceTotals()"></td>
         <td><input type="number" min="0" step="0.01" value="0" oninput="recalcInvoiceTotals()"></td>
         <td class="inv-line-total">$0.00</td>
       </tr>
-<tr>
+      <tr>
         <td><input type="text" ></td>
         <td><input type="number" min="0" value="0" oninput="recalcInvoiceTotals()"></td>
         <td><input type="number" min="0" step="0.01" value="0" oninput="recalcInvoiceTotals()"></td>
         <td class="inv-line-total">$0.00</td>
       </tr>
-<tr>
+      <tr>
         <td><input type="text" ></td>
         <td><input type="number" min="0" value="0" oninput="recalcInvoiceTotals()"></td>
         <td><input type="number" min="0" step="0.01" value="0" oninput="recalcInvoiceTotals()"></td>
         <td class="inv-line-total">$0.00</td>
       </tr>
-<tr>
+      <tr>
         <td><input type="text" ></td>
         <td><input type="number" min="0" value="0" oninput="recalcInvoiceTotals()"></td>
         <td><input type="number" min="0" step="0.01" value="0" oninput="recalcInvoiceTotals()"></td>
         <td class="inv-line-total">$0.00</td>
       </tr>
-<tr>
+      <tr>
         <td><input type="text" ></td>
         <td><input type="number" min="0" value="0" oninput="recalcInvoiceTotals()"></td>
         <td><input type="number" min="0" step="0.01" value="0" oninput="recalcInvoiceTotals()"></td>
         <td class="inv-line-total">$0.00</td>
       </tr>
-    </tbody>
-  </table>
+      </tbody>
+    </table>
 
-  <div class="section-title">Totals</div>
-  <table class="totals-table">
-    <tr>
-      <td class="totals-label">Subtotal:</td>
-      <td class="totals-value" id="inv-subtotal">$0.00</td>
-    </tr>
-    <tr>
-      <td class="totals-label">
-        Tax:
-        <span style="font-weight: normal;">(enter amount)</span>
-      </td>
-      <td class="totals-value">
-        <input type="number" id="inv-tax" value="0" step="0.01" oninput="recalcInvoiceTotals()">
-      </td>
-    </tr>
-    <tr>
-      <td class="totals-label">Total Due:</td>
-      <td class="totals-value" id="inv-total">$0.00</td>
-    </tr>
-  </table>
+    <div class="section-title">Totals</div>
+    <table class="totals-table">
+      <tr>
+        <td class="totals-label">Subtotal:</td>
+        <td class="totals-value" id="inv-subtotal">$0.00</td>
+      </tr>
+      <tr>
+        <td class="totals-label">
+          Tax:
+          <span style="font-weight: normal;">(enter amount)</span>
+        </td>
+        <td class="totals-value">
+          <input type="number" id="inv-tax" value="0" step="0.01" oninput="recalcInvoiceTotals()">
+        </td>
+      </tr>
+      <tr>
+        <td class="totals-label">Total Due:</td>
+        <td class="totals-value" id="inv-total">$0.00</td>
+      </tr>
+    </table>
 
-  <div class="section-title">Payment Terms</div>
-  <p style="font-size:12px;">
-    Payment is due upon completion unless otherwise agreed in writing.<br>
-    Service call minimum: $150.
-  </p>
+    <div class="section-title">Payment Terms</div>
+    <p style="font-size:12px;">
+      Payment is due upon completion unless otherwise agreed in writing.<br>
+      Service call minimum: $150.
+    </p>
+  </div>
 
+  <script src="libs/html2pdf.bundle.min.js"></script>
   <script>
     function recalcInvoiceTotals() {
       const rows = document.querySelectorAll('#invoice-services tbody tr');
@@ -211,6 +213,27 @@
       document.getElementById('inv-subtotal').textContent = '$' + subtotal.toFixed(2);
       document.getElementById('inv-total').textContent = '$' + total.toFixed(2);
     }
+
+    function generatePDF() {
+      if (typeof html2pdf === 'undefined') {
+        alert('html2pdf library not found. Make sure libs/html2pdf.bundle.min.js is present.');
+        return;
+      }
+      let filename = prompt("Enter a name for your PDF:");
+      if (!filename) filename = "summit_invoice";
+      filename = filename.replace(/[^a-z0-9_\-]/gi, "_") + ".pdf";
+
+      const element = document.getElementById('pdf-area');
+      const opt = {
+        margin: 0.5,
+        filename: filename,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+      };
+      html2pdf().set(opt).from(element).save();
+    }
+
     recalcInvoiceTotals();
   </script>
 </body>

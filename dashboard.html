@@ -6,7 +6,7 @@
   <style>
     body { font-family: system-ui, sans-serif; margin: 20px; color:#111827; }
     h1 { text-align:center; margin:0 0 12px; font-size:22px; text-transform:uppercase; letter-spacing:1px; }
-    .tabs { display:flex; gap:8px; justify-content:center; margin-bottom:16px; flex-wrap:wrap; }
+    .tabs { display:flex; gap:8px; justify-content:center; margin-bottom:12px; flex-wrap:wrap; }
     .tab-btn {
       padding:6px 12px;
       border:1px solid #4b5563;
@@ -18,28 +18,39 @@
       background:#e5e7eb;
       font-weight:600;
     }
+    .top-actions {
+      text-align:right;
+      margin-bottom:8px;
+    }
+    button {
+      padding:6px 10px;
+      border:1px solid #111827;
+      background:#f9fafb;
+      cursor:pointer;
+      font-size:13px;
+    }
+    button:hover { background:#e5e7eb; }
     iframe {
       width:100%;
       height:80vh;
       border:1px solid #d1d5db;
     }
-    @media print {
-      body * { visibility:hidden; }
-      iframe#print-frame, iframe#print-frame * { visibility:visible; }
-      iframe#print-frame { position:fixed; inset:0; height:100vh; width:100vw; border:none; }
-    }
   </style>
 </head>
 <body>
   <h1>SUMMIT NETWORK SERVICES</h1>
-  <div style="text-align:center; margin-bottom:16px; font-size:13px;">
-    Quote, Invoice, and Receipt tools
+  <div style="text-align:center; margin-bottom:8px; font-size:13px;">
+    Quote, Invoice, and Receipt Tools
   </div>
 
   <div class="tabs">
     <button class="tab-btn active" onclick="switchTab('quote.html', this)">Quote</button>
     <button class="tab-btn" onclick="switchTab('invoice.html', this)">Invoice</button>
     <button class="tab-btn" onclick="switchTab('receipt.html', this)">Receipt</button>
+  </div>
+
+  <div class="top-actions">
+    <button onclick="downloadCurrentPDF()">Download Current as PDF</button>
   </div>
 
   <iframe id="tool-frame" src="quote.html"></iframe>
@@ -49,6 +60,19 @@
       document.getElementById('tool-frame').src = page;
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
+    }
+
+    function downloadCurrentPDF() {
+      const frame = document.getElementById('tool-frame');
+      try {
+        if (frame.contentWindow && typeof frame.contentWindow.generatePDF === 'function') {
+          frame.contentWindow.generatePDF();
+        } else {
+          alert('The current tool does not support PDF generation.');
+        }
+      } catch (e) {
+        alert('Unable to access the tool frame. Make sure all files are opened from the same folder.');
+      }
     }
   </script>
 </body>
