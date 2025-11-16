@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Summit Network Services - Quote</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <style>
     @page {
       margin: 0.5in;
@@ -270,7 +271,6 @@
     <div class="notes-box" contenteditable="true"></div>
   </div>
 
-  <script src="libs/html2pdf.bundle.min.js"></script>
   <script>
     function recalcQuoteTotals() {
       const tbody = document.querySelector('#quote-services tbody');
@@ -300,13 +300,9 @@
     }
 
     function generatePDF() {
-      if (typeof html2pdf === 'undefined') {
-        alert('html2pdf library not found. Make sure libs/html2pdf.bundle.min.js is present.');
-        return;
-      }
       let filename = prompt("Enter a name for your PDF:");
       if (!filename) filename = "summit_quote";
-      filename = filename.replace(/[^a-z0-9_\-]/gi, "_") + ".pdf";
+      filename = filename.replace(/[^a-z0-9_\\-]/gi, "_") + ".pdf";
 
       const element = document.getElementById('pdf-area');
       const opt = {

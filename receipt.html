@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Summit Network Services - Receipt</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <style>
     @page { margin: 0.5in; }
     body { font-family: system-ui, sans-serif; margin: 20px; color:#111827; }
@@ -84,46 +85,46 @@
         </tr>
       </thead>
       <tbody>
-      <tr>
-        <td><input type="text" placeholder="e.g. Rack Cleanup (Medium)"></td>
-        <td><input type="number" min="0" value="0" oninput="recalcReceiptTotals()"></td>
-        <td><input type="number" min="0" step="0.01" value="0" oninput="recalcReceiptTotals()"></td>
-      </tr>
-      <tr>
-        <td><input type="text" ></td>
-        <td><input type="number" min="0" value="0" oninput="recalcReceiptTotals()"></td>
-        <td><input type="number" min="0" step="0.01" value="0" oninput="recalcReceiptTotals()"></td>
-      </tr>
-      <tr>
-        <td><input type="text" ></td>
-        <td><input type="number" min="0" value="0" oninput="recalcReceiptTotals()"></td>
-        <td><input type="number" min="0" step="0.01" value="0" oninput="recalcReceiptTotals()"></td>
-      </tr>
-      <tr>
-        <td><input type="text" ></td>
-        <td><input type="number" min="0" value="0" oninput="recalcReceiptTotals()"></td>
-        <td><input type="number" min="0" step="0.01" value="0" oninput="recalcReceiptTotals()"></td>
-      </tr>
-      <tr>
-        <td><input type="text" ></td>
-        <td><input type="number" min="0" value="0" oninput="recalcReceiptTotals()"></td>
-        <td><input type="number" min="0" step="0.01" value="0" oninput="recalcReceiptTotals()"></td>
-      </tr>
-      <tr>
-        <td><input type="text" ></td>
-        <td><input type="number" min="0" value="0" oninput="recalcReceiptTotals()"></td>
-        <td><input type="number" min="0" step="0.01" value="0" oninput="recalcReceiptTotals()"></td>
-      </tr>
-      <tr>
-        <td><input type="text" ></td>
-        <td><input type="number" min="0" value="0" oninput="recalcReceiptTotals()"></td>
-        <td><input type="number" min="0" step="0.01" value="0" oninput="recalcReceiptTotals()"></td>
-      </tr>
-      <tr>
-        <td><input type="text" ></td>
-        <td><input type="number" min="0" value="0" oninput="recalcReceiptTotals()"></td>
-        <td><input type="number" min="0" step="0.01" value="0" oninput="recalcReceiptTotals()"></td>
-      </tr>
+        <tr>
+          <td><input type="text" placeholder="e.g. Rack Cleanup (Medium)"></td>
+          <td><input type="number" min="0" value="0" oninput="recalcReceiptTotals()"></td>
+          <td><input type="number" min="0" step="0.01" value="0" oninput="recalcReceiptTotals()"></td>
+        </tr>
+        <tr>
+          <td><input type="text"></td>
+          <td><input type="number" min="0" value="0" oninput="recalcReceiptTotals()"></td>
+          <td><input type="number" min="0" step="0.01" value="0" oninput="recalcReceiptTotals()"></td>
+        </tr>
+        <tr>
+          <td><input type="text"></td>
+          <td><input type="number" min="0" value="0" oninput="recalcReceiptTotals()"></td>
+          <td><input type="number" min="0" step="0.01" value="0" oninput="recalcReceiptTotals()"></td>
+        </tr>
+        <tr>
+          <td><input type="text"></td>
+          <td><input type="number" min="0" value="0" oninput="recalcReceiptTotals()"></td>
+          <td><input type="number" min="0" step="0.01" value="0" oninput="recalcReceiptTotals()"></td>
+        </tr>
+        <tr>
+          <td><input type="text"></td>
+          <td><input type="number" min="0" value="0" oninput="recalcReceiptTotals()"></td>
+          <td><input type="number" min="0" step="0.01" value="0" oninput="recalcReceiptTotals()"></td>
+        </tr>
+        <tr>
+          <td><input type="text"></td>
+          <td><input type="number" min="0" value="0" oninput="recalcReceiptTotals()"></td>
+          <td><input type="number" min="0" step="0.01" value="0" oninput="recalcReceiptTotals()"></td>
+        </tr>
+        <tr>
+          <td><input type="text"></td>
+          <td><input type="number" min="0" value="0" oninput="recalcReceiptTotals()"></td>
+          <td><input type="number" min="0" step="0.01" value="0" oninput="recalcReceiptTotals()"></td>
+        </tr>
+        <tr>
+          <td><input type="text"></td>
+          <td><input type="number" min="0" value="0" oninput="recalcReceiptTotals()"></td>
+          <td><input type="number" min="0" step="0.01" value="0" oninput="recalcReceiptTotals()"></td>
+        </tr>
       </tbody>
     </table>
 
@@ -135,7 +136,6 @@
     <p style="margin-top:24px; font-size:12px;">Thank you for your business!</p>
   </div>
 
-  <script src="libs/html2pdf.bundle.min.js"></script>
   <script>
     function recalcReceiptTotals() {
       const rows = document.querySelectorAll('#receipt-services tbody tr');
@@ -145,17 +145,13 @@
         const price = parseFloat(row.cells[2].querySelector('input').value || '0');
         total += qty * price;
       });
-      // You can optionally sync this with Amount Paid manually.
+      // optional: you could sync this to Amount Paid manually.
     }
 
     function generatePDF() {
-      if (typeof html2pdf === 'undefined') {
-        alert('html2pdf library not found. Make sure libs/html2pdf.bundle.min.js is present.');
-        return;
-      }
       let filename = prompt("Enter a name for your PDF:");
       if (!filename) filename = "summit_receipt";
-      filename = filename.replace(/[^a-z0-9_\-]/gi, "_") + ".pdf";
+      filename = filename.replace(/[^a-z0-9_\\-]/gi, "_") + ".pdf";
 
       const element = document.getElementById('pdf-area');
       const opt = {

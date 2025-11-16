@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Summit Network Services - Invoice</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <style>
     @page { margin: 0.5in; }
     body { font-family: system-ui, sans-serif; margin: 20px; color: #111827; }
@@ -94,66 +95,66 @@
         </tr>
       </thead>
       <tbody>
-      <tr>
-        <td><input type="text" placeholder="e.g. Rack Cleanup (Medium)"></td>
-        <td><input type="number" min="0" value="0" oninput="recalcInvoiceTotals()"></td>
-        <td><input type="number" min="0" step="0.01" value="0" oninput="recalcInvoiceTotals()"></td>
-        <td class="inv-line-total">$0.00</td>
-      </tr>
-      <tr>
-        <td><input type="text" ></td>
-        <td><input type="number" min="0" value="0" oninput="recalcInvoiceTotals()"></td>
-        <td><input type="number" min="0" step="0.01" value="0" oninput="recalcInvoiceTotals()"></td>
-        <td class="inv-line-total">$0.00</td>
-      </tr>
-      <tr>
-        <td><input type="text" ></td>
-        <td><input type="number" min="0" value="0" oninput="recalcInvoiceTotals()"></td>
-        <td><input type="number" min="0" step="0.01" value="0" oninput="recalcInvoiceTotals()"></td>
-        <td class="inv-line-total">$0.00</td>
-      </tr>
-      <tr>
-        <td><input type="text" ></td>
-        <td><input type="number" min="0" value="0" oninput="recalcInvoiceTotals()"></td>
-        <td><input type="number" min="0" step="0.01" value="0" oninput="recalcInvoiceTotals()"></td>
-        <td class="inv-line-total">$0.00</td>
-      </tr>
-      <tr>
-        <td><input type="text" ></td>
-        <td><input type="number" min="0" value="0" oninput="recalcInvoiceTotals()"></td>
-        <td><input type="number" min="0" step="0.01" value="0" oninput="recalcInvoiceTotals()"></td>
-        <td class="inv-line-total">$0.00</td>
-      </tr>
-      <tr>
-        <td><input type="text" ></td>
-        <td><input type="number" min="0" value="0" oninput="recalcInvoiceTotals()"></td>
-        <td><input type="number" min="0" step="0.01" value="0" oninput="recalcInvoiceTotals()"></td>
-        <td class="inv-line-total">$0.00</td>
-      </tr>
-      <tr>
-        <td><input type="text" ></td>
-        <td><input type="number" min="0" value="0" oninput="recalcInvoiceTotals()"></td>
-        <td><input type="number" min="0" step="0.01" value="0" oninput="recalcInvoiceTotals()"></td>
-        <td class="inv-line-total">$0.00</td>
-      </tr>
-      <tr>
-        <td><input type="text" ></td>
-        <td><input type="number" min="0" value="0" oninput="recalcInvoiceTotals()"></td>
-        <td><input type="number" min="0" step="0.01" value="0" oninput="recalcInvoiceTotals()"></td>
-        <td class="inv-line-total">$0.00</td>
-      </tr>
-      <tr>
-        <td><input type="text" ></td>
-        <td><input type="number" min="0" value="0" oninput="recalcInvoiceTotals()"></td>
-        <td><input type="number" min="0" step="0.01" value="0" oninput="recalcInvoiceTotals()"></td>
-        <td class="inv-line-total">$0.00</td>
-      </tr>
-      <tr>
-        <td><input type="text" ></td>
-        <td><input type="number" min="0" value="0" oninput="recalcInvoiceTotals()"></td>
-        <td><input type="number" min="0" step="0.01" value="0" oninput="recalcInvoiceTotals()"></td>
-        <td class="inv-line-total">$0.00</td>
-      </tr>
+        <tr>
+          <td><input type="text" placeholder="e.g. Rack Cleanup (Medium)"></td>
+          <td><input type="number" min="0" value="0" oninput="recalcInvoiceTotals()"></td>
+          <td><input type="number" min="0" step="0.01" value="0" oninput="recalcInvoiceTotals()"></td>
+          <td class="inv-line-total">$0.00</td>
+        </tr>
+        <tr>
+          <td><input type="text"></td>
+          <td><input type="number" min="0" value="0" oninput="recalcInvoiceTotals()"></td>
+          <td><input type="number" min="0" step="0.01" value="0" oninput="recalcInvoiceTotals()"></td>
+          <td class="inv-line-total">$0.00</td>
+        </tr>
+        <tr>
+          <td><input type="text"></td>
+          <td><input type="number" min="0" value="0" oninput="recalcInvoiceTotals()"></td>
+          <td><input type="number" min="0" step="0.01" value="0" oninput="recalcInvoiceTotals()"></td>
+          <td class="inv-line-total">$0.00</td>
+        </tr>
+        <tr>
+          <td><input type="text"></td>
+          <td><input type="number" min="0" value="0" oninput="recalcInvoiceTotals()"></td>
+          <td><input type="number" min="0" step="0.01" value="0" oninput="recalcInvoiceTotals()"></td>
+          <td class="inv-line-total">$0.00</td>
+        </tr>
+        <tr>
+          <td><input type="text"></td>
+          <td><input type="number" min="0" value="0" oninput="recalcInvoiceTotals()"></td>
+          <td><input type="number" min="0" step="0.01" value="0" oninput="recalcInvoiceTotals()"></td>
+          <td class="inv-line-total">$0.00</td>
+        </tr>
+        <tr>
+          <td><input type="text"></td>
+          <td><input type="number" min="0" value="0" oninput="recalcInvoiceTotals()"></td>
+          <td><input type="number" min="0" step="0.01" value="0" oninput="recalcInvoiceTotals()"></td>
+          <td class="inv-line-total">$0.00</td>
+        </tr>
+        <tr>
+          <td><input type="text"></td>
+          <td><input type="number" min="0" value="0" oninput="recalcInvoiceTotals()"></td>
+          <td><input type="number" min="0" step="0.01" value="0" oninput="recalcInvoiceTotals()"></td>
+          <td class="inv-line-total">$0.00</td>
+        </tr>
+        <tr>
+          <td><input type="text"></td>
+          <td><input type="number" min="0" value="0" oninput="recalcInvoiceTotals()"></td>
+          <td><input type="number" min="0" step="0.01" value="0" oninput="recalcInvoiceTotals()"></td>
+          <td class="inv-line-total">$0.00</td>
+        </tr>
+        <tr>
+          <td><input type="text"></td>
+          <td><input type="number" min="0" value="0" oninput="recalcInvoiceTotals()"></td>
+          <td><input type="number" min="0" step="0.01" value="0" oninput="recalcInvoiceTotals()"></td>
+          <td class="inv-line-total">$0.00</td>
+        </tr>
+        <tr>
+          <td><input type="text"></td>
+          <td><input type="number" min="0" value="0" oninput="recalcInvoiceTotals()"></td>
+          <td><input type="number" min="0" step="0.01" value="0" oninput="recalcInvoiceTotals()"></td>
+          <td class="inv-line-total">$0.00</td>
+        </tr>
       </tbody>
     </table>
 
@@ -185,7 +186,6 @@
     </p>
   </div>
 
-  <script src="libs/html2pdf.bundle.min.js"></script>
   <script>
     function recalcInvoiceTotals() {
       const rows = document.querySelectorAll('#invoice-services tbody tr');
@@ -215,13 +215,9 @@
     }
 
     function generatePDF() {
-      if (typeof html2pdf === 'undefined') {
-        alert('html2pdf library not found. Make sure libs/html2pdf.bundle.min.js is present.');
-        return;
-      }
       let filename = prompt("Enter a name for your PDF:");
       if (!filename) filename = "summit_invoice";
-      filename = filename.replace(/[^a-z0-9_\-]/gi, "_") + ".pdf";
+      filename = filename.replace(/[^a-z0-9_\\-]/gi, "_") + ".pdf";
 
       const element = document.getElementById('pdf-area');
       const opt = {

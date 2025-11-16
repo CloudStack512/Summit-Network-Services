@@ -2,78 +2,648 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Summit Network Services - Docs Dashboard</title>
+  <title>Summit Network Services - Dashboard</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <style>
-    body { font-family: system-ui, sans-serif; margin: 20px; color:#111827; }
-    h1 { text-align:center; margin:0 0 12px; font-size:22px; text-transform:uppercase; letter-spacing:1px; }
-    .tabs { display:flex; gap:8px; justify-content:center; margin-bottom:12px; flex-wrap:wrap; }
+    @page { margin: 0.5in; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 20px;
+      color: #111827;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 22px;
+    }
+    .tabs {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
     .tab-btn {
-      padding:6px 12px;
-      border:1px solid #4b5563;
-      background:#f9fafb;
-      cursor:pointer;
-      font-size:13px;
+      padding: 6px 12px;
+      border: 1px solid #4b5563;
+      background: #f9fafb;
+      cursor: pointer;
+      font-size: 13px;
     }
     .tab-btn.active {
-      background:#e5e7eb;
-      font-weight:600;
-    }
-    .top-actions {
-      text-align:right;
-      margin-bottom:8px;
+      background: #e5e7eb;
+      font-weight: 600;
     }
     button {
-      padding:6px 10px;
-      border:1px solid #111827;
-      background:#f9fafb;
-      cursor:pointer;
-      font-size:13px;
+      padding: 6px 10px;
+      border: 1px solid #111827;
+      background: #f9fafb;
+      cursor: pointer;
+      font-size: 13px;
     }
-    button:hover { background:#e5e7eb; }
-    iframe {
-      width:100%;
-      height:80vh;
-      border:1px solid #d1d5db;
+    button:hover { background: #e5e7eb; }
+
+    .top-actions {
+      text-align: right;
+      margin-bottom: 10px;
+    }
+
+    .tool-container {
+      display: none;
+      border: 1px solid #d1d5db;
+      padding: 16px;
+      margin-top: 10px;
+    }
+    .tool-container.active {
+      display: block;
+    }
+
+    .logo-wrapper {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .logo-title {
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: 0.06em;
+    }
+    .logo-box {
+      margin: 6px auto 0;
+      width: 260px;
+      height: 80px;
+      border: 1px solid #9ca3af;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: #6b7280;
+      font-style: italic;
+    }
+
+    h2 {
+      text-align: center;
+      margin: 4px 0 12px;
+      font-size: 16px;
+    }
+    .section-title {
+      font-size: 13px;
+      margin-top: 14px;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      font-size: 12px;
+    }
+    th, td {
+      border: 1px solid #d1d5db;
+      padding: 4px 6px;
+    }
+    th {
+      background: #f3f4f6;
+      text-align: left;
+    }
+    input[type="text"], input[type="number"] {
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #d1d5db;
+      padding: 2px 4px;
+      font-size: 12px;
+    }
+    input[type="number"] { text-align: right; }
+    .totals-table td {
+      border: none;
+      padding: 2px 4px;
+    }
+    .totals-label {
+      text-align: right;
+      font-weight: 600;
+      width: 70%;
+    }
+    .totals-value {
+      text-align: right;
+      width: 30%;
+    }
+    .notes-box {
+      border: 1px solid #d1d5db;
+      min-height: 60px;
+      padding: 4px;
+      font-size: 12px;
+      white-space: pre-wrap;
     }
   </style>
 </head>
 <body>
-  <h1>SUMMIT NETWORK SERVICES</h1>
-  <div style="text-align:center; margin-bottom:8px; font-size:13px;">
-    Quote, Invoice, and Receipt Tools
-  </div>
+  <h1>Summit Network Services</h1>
 
   <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab('quote.html', this)">Quote</button>
-    <button class="tab-btn" onclick="switchTab('invoice.html', this)">Invoice</button>
-    <button class="tab-btn" onclick="switchTab('receipt.html', this)">Receipt</button>
+    <button class="tab-btn active" data-tool="quote" onclick="switchTool('quote', this)">Quote</button>
+    <button class="tab-btn" data-tool="invoice" onclick="switchTool('invoice', this)">Invoice</button>
+    <button class="tab-btn" data-tool="receipt" onclick="switchTool('receipt', this)">Receipt</button>
   </div>
 
   <div class="top-actions">
-    <button onclick="downloadCurrentPDF()">Download Current as PDF</button>
+    <button onclick="downloadPDF()">Download Current as PDF</button>
   </div>
 
-  <iframe id="tool-frame" src="quote.html"></iframe>
+  <!-- ================= QUOTE TOOL ================= -->
+  <div id="tool-quote" class="tool-container active">
+    <div id="quote-pdf-area">
+      <div class="logo-wrapper">
+        <div class="logo-title">SUMMIT NETWORK SERVICES</div>
+        <div class="logo-box">PLACE LOGO HERE (PNG / SVG)</div>
+      </div>
+
+      <h2>Service Quote Checklist (Fixed Pricing)</h2>
+
+      <div class="section-title">Client Information</div>
+      <table>
+        <tr>
+          <td style="width:100px;">Client Name:</td>
+          <td><input type="text"></td>
+          <td style="width:90px;">Phone:</td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td>Business Name:</td>
+          <td><input type="text"></td>
+          <td>Email:</td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td>Address:</td>
+          <td><input type="text"></td>
+          <td>Assessment Date:</td>
+          <td><input type="text"></td>
+        </tr>
+      </table>
+
+      <div class="section-title">Available Services</div>
+      <table id="quote-services">
+        <thead>
+          <tr>
+            <th style="width: 24px;">✔</th>
+            <th>Service</th>
+            <th style="width: 90px;">Price</th>
+            <th style="width: 50px;">Qty</th>
+            <th style="width: 80px;">Line Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-price="35">
+            <td><input type="checkbox" onclick="quoteRecalcTotals()"></td>
+            <td>RJ45 Re-Termination</td>
+            <td>$35 per end</td>
+            <td><input type="number" min="0" value="0" oninput="quoteRecalcTotals()"></td>
+            <td class="quote-line-total">$0.00</td>
+          </tr>
+          <tr data-price="50">
+            <td><input type="checkbox" onclick="quoteRecalcTotals()"></td>
+            <td>Wall Jack Re-Termination / Replacement</td>
+            <td>$50 each</td>
+            <td><input type="number" min="0" value="0" oninput="quoteRecalcTotals()"></td>
+            <td class="quote-line-total">$0.00</td>
+          </tr>
+          <tr data-price="25">
+            <td><input type="checkbox" onclick="quoteRecalcTotals()"></td>
+            <td>Patch Panel Port Punchdown</td>
+            <td>$25 per port</td>
+            <td><input type="number" min="0" value="0" oninput="quoteRecalcTotals()"></td>
+            <td class="quote-line-total">$0.00</td>
+          </tr>
+          <tr data-price="10">
+            <td><input type="checkbox" onclick="quoteRecalcTotals()"></td>
+            <td>Patch Cable Replacement</td>
+            <td>$10 each</td>
+            <td><input type="number" min="0" value="0" oninput="quoteRecalcTotals()"></td>
+            <td class="quote-line-total">$0.00</td>
+          </tr>
+          <tr data-price="100">
+            <td><input type="checkbox" onclick="quoteRecalcTotals()"></td>
+            <td>Port Tracing / Toning</td>
+            <td>$100/hr</td>
+            <td><input type="number" min="0" value="0" oninput="quoteRecalcTotals()"></td>
+            <td class="quote-line-total">$0.00</td>
+          </tr>
+          <tr data-price="100">
+            <td><input type="checkbox" onclick="quoteRecalcTotals()"></td>
+            <td>Network Testing &amp; Mapping</td>
+            <td>$100/hr</td>
+            <td><input type="number" min="0" value="0" oninput="quoteRecalcTotals()"></td>
+            <td class="quote-line-total">$0.00</td>
+          </tr>
+          <tr data-price="250">
+            <td><input type="checkbox" onclick="quoteRecalcTotals()"></td>
+            <td>Full Labeling Package</td>
+            <td>$250</td>
+            <td><input type="number" min="0" value="0" oninput="quoteRecalcTotals()"></td>
+            <td class="quote-line-total">$0.00</td>
+          </tr>
+          <tr data-price="250">
+            <td><input type="checkbox" onclick="quoteRecalcTotals()"></td>
+            <td>Documentation PDF Package</td>
+            <td>$250</td>
+            <td><input type="number" min="0" value="0" oninput="quoteRecalcTotals()"></td>
+            <td class="quote-line-total">$0.00</td>
+          </tr>
+          <tr data-price="450">
+            <td><input type="checkbox" onclick="quoteRecalcTotals()"></td>
+            <td>Rack Cleanup (Small)</td>
+            <td>$450</td>
+            <td><input type="number" min="0" value="0" oninput="quoteRecalcTotals()"></td>
+            <td class="quote-line-total">$0.00</td>
+          </tr>
+          <tr data-price="650">
+            <td><input type="checkbox" onclick="quoteRecalcTotals()"></td>
+            <td>Rack Cleanup (Medium)</td>
+            <td>$650</td>
+            <td><input type="number" min="0" value="0" oninput="quoteRecalcTotals()"></td>
+            <td class="quote-line-total">$0.00</td>
+          </tr>
+          <tr data-price="850">
+            <td><input type="checkbox" onclick="quoteRecalcTotals()"></td>
+            <td>Rack Cleanup (Heavy)</td>
+            <td>$850</td>
+            <td><input type="number" min="0" value="0" oninput="quoteRecalcTotals()"></td>
+            <td class="quote-line-total">$0.00</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="section-title">Totals</div>
+      <table class="totals-table">
+        <tr>
+          <td class="totals-label">Subtotal:</td>
+          <td class="totals-value" id="quote-subtotal">$0.00</td>
+        </tr>
+        <tr>
+          <td class="totals-label">
+            Tax (if applicable):
+            <span style="font-weight: normal;">(enter tax amount)</span>
+          </td>
+          <td class="totals-value">
+            <input type="number" id="quote-tax" value="0" step="0.01" oninput="quoteRecalcTotals()">
+          </td>
+        </tr>
+        <tr>
+          <td class="totals-label">Final Total:</td>
+          <td class="totals-value" id="quote-final">$0.00</td>
+        </tr>
+        <tr>
+          <td class="totals-label">Service Call Minimum:</td>
+          <td class="totals-value">$150.00</td>
+        </tr>
+      </table>
+
+      <div class="section-title">Notes / Findings</div>
+      <div class="notes-box" contenteditable="true"></div>
+    </div>
+  </div>
+
+  <!-- ================= INVOICE TOOL ================= -->
+  <div id="tool-invoice" class="tool-container">
+    <div id="invoice-pdf-area">
+      <div class="logo-wrapper">
+        <div class="logo-title">SUMMIT NETWORK SERVICES</div>
+        <div class="logo-box">PLACE LOGO HERE (PNG / SVG)</div>
+      </div>
+
+      <h2>INVOICE</h2>
+
+      <div class="section-title">Invoice Details</div>
+      <table>
+        <tr>
+          <td style="width:120px;">Invoice #:</td>
+          <td><input type="text"></td>
+          <td style="width:120px;">Date:</td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td>Client Name:</td>
+          <td><input type="text"></td>
+          <td>Business Name:</td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td>Address:</td>
+          <td><input type="text"></td>
+          <td>Email:</td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td>Phone:</td>
+          <td><input type="text"></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+
+      <div class="section-title">Services Billed</div>
+      <table id="invoice-services">
+        <thead>
+          <tr>
+            <th>Service Description</th>
+            <th style="width:60px;">Qty</th>
+            <th style="width:80px;">Unit Price</th>
+            <th style="width:90px;">Line Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="text" placeholder="e.g. Rack Cleanup (Medium)"></td>
+            <td><input type="number" min="0" value="0" oninput="invoiceRecalcTotals()"></td>
+            <td><input type="number" min="0" step="0.01" value="0" oninput="invoiceRecalcTotals()"></td>
+            <td class="inv-line-total">$0.00</td>
+          </tr>
+          <tr>
+            <td><input type="text"></td>
+            <td><input type="number" min="0" value="0" oninput="invoiceRecalcTotals()"></td>
+            <td><input type="number" min="0" step="0.01" value="0" oninput="invoiceRecalcTotals()"></td>
+            <td class="inv-line-total">$0.00</td>
+          </tr>
+          <tr>
+            <td><input type="text"></td>
+            <td><input type="number" min="0" value="0" oninput="invoiceRecalcTotals()"></td>
+            <td><input type="number" min="0" step="0.01" value="0" oninput="invoiceRecalcTotals()"></td>
+            <td class="inv-line-total">$0.00</td>
+          </tr>
+          <tr>
+            <td><input type="text"></td>
+            <td><input type="number" min="0" value="0" oninput="invoiceRecalcTotals()"></td>
+            <td><input type="number" min="0" step="0.01" value="0" oninput="invoiceRecalcTotals()"></td>
+            <td class="inv-line-total">$0.00</td>
+          </tr>
+          <tr>
+            <td><input type="text"></td>
+            <td><input type="number" min="0" value="0" oninput="invoiceRecalcTotals()"></td>
+            <td><input type="number" min="0" step="0.01" value="0" oninput="invoiceRecalcTotals()"></td>
+            <td class="inv-line-total">$0.00</td>
+          </tr>
+          <tr>
+            <td><input type="text"></td>
+            <td><input type="number" min="0" value="0" oninput="invoiceRecalcTotals()"></td>
+            <td><input type="number" min="0" step="0.01" value="0" oninput="invoiceRecalcTotals()"></td>
+            <td class="inv-line-total">$0.00</td>
+          </tr>
+          <tr>
+            <td><input type="text"></td>
+            <td><input type="number" min="0" value="0" oninput="invoiceRecalcTotals()"></td>
+            <td><input type="number" min="0" step="0.01" value="0" oninput="invoiceRecalcTotals()"></td>
+            <td class="inv-line-total">$0.00</td>
+          </tr>
+          <tr>
+            <td><input type="text"></td>
+            <td><input type="number" min="0" value="0" oninput="invoiceRecalcTotals()"></td>
+            <td><input type="number" min="0" step="0.01" value="0" oninput="invoiceRecalcTotals()"></td>
+            <td class="inv-line-total">$0.00</td>
+          </tr>
+          <tr>
+            <td><input type="text"></td>
+            <td><input type="number" min="0" value="0" oninput="invoiceRecalcTotals()"></td>
+            <td><input type="number" min="0" step="0.01" value="0" oninput="invoiceRecalcTotals()"></td>
+            <td class="inv-line-total">$0.00</td>
+          </tr>
+          <tr>
+            <td><input type="text"></td>
+            <td><input type="number" min="0" value="0" oninput="invoiceRecalcTotals()"></td>
+            <td><input type="number" min="0" step="0.01" value="0" oninput="invoiceRecalcTotals()"></td>
+            <td class="inv-line-total">$0.00</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="section-title">Totals</div>
+      <table class="totals-table">
+        <tr>
+          <td class="totals-label">Subtotal:</td>
+          <td class="totals-value" id="inv-subtotal">$0.00</td>
+        </tr>
+        <tr>
+          <td class="totals-label">
+            Tax:
+            <span style="font-weight: normal;">(enter amount)</span>
+          </td>
+          <td class="totals-value">
+            <input type="number" id="inv-tax" value="0" step="0.01" oninput="invoiceRecalcTotals()">
+          </td>
+        </tr>
+        <tr>
+          <td class="totals-label">Total Due:</td>
+          <td class="totals-value" id="inv-total">$0.00</td>
+        </tr>
+      </table>
+
+      <div class="section-title">Payment Terms</div>
+      <p style="font-size:12px;">
+        Payment is due upon completion unless otherwise agreed in writing.<br>
+        Service call minimum: $150.
+      </p>
+    </div>
+  </div>
+
+  <!-- ================= RECEIPT TOOL ================= -->
+  <div id="tool-receipt" class="tool-container">
+    <div id="receipt-pdf-area">
+      <div class="logo-wrapper">
+        <div class="logo-title">SUMMIT NETWORK SERVICES</div>
+        <div class="logo-box">PLACE LOGO HERE (PNG / SVG)</div>
+      </div>
+
+      <h2>PAYMENT RECEIPT</h2>
+
+      <div class="section-title">Receipt Details</div>
+      <table>
+        <tr>
+          <td style="width:120px;">Receipt #:</td>
+          <td><input type="text"></td>
+          <td style="width:120px;">Date:</td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td>Client Name:</td>
+          <td><input type="text"></td>
+          <td>Business Name:</td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td>Amount Paid:</td>
+          <td><input type="number" min="0" step="0.01"></td>
+          <td>Payment Method:</td>
+          <td><input type="text" placeholder="Cash, Card, ACH, etc."></td>
+        </tr>
+      </table>
+
+      <div class="section-title">Services Included</div>
+      <table id="receipt-services">
+        <thead>
+          <tr>
+            <th>Service Description</th>
+            <th style="width:60px;">Qty</th>
+            <th style="width:80px;">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="text" placeholder="e.g. Rack Cleanup (Medium)"></td>
+            <td><input type="number" min="0" value="0" oninput="receiptRecalcTotals()"></td>
+            <td><input type="number" min="0" step="0.01" value="0" oninput="receiptRecalcTotals()"></td>
+          </tr>
+          <tr>
+            <td><input type="text"></td>
+            <td><input type="number" min="0" value="0" oninput="receiptRecalcTotals()"></td>
+            <td><input type="number" min="0" step="0.01" value="0" oninput="receiptRecalcTotals()"></td>
+          </tr>
+          <tr>
+            <td><input type="text"></td>
+            <td><input type="number" min="0" value="0" oninput="receiptRecalcTotals()"></td>
+            <td><input type="number" min="0" step="0.01" value="0" oninput="receiptRecalcTotals()"></td>
+          </tr>
+          <tr>
+            <td><input type="text"></td>
+            <td><input type="number" min="0" value="0" oninput="receiptRecalcTotals()"></td>
+            <td><input type="number" min="0" step="0.01" value="0" oninput="receiptRecalcTotals()"></td>
+          </tr>
+          <tr>
+            <td><input type="text"></td>
+            <td><input type="number" min="0" value="0" oninput="receiptRecalcTotals()"></td>
+            <td><input type="number" min="0" step="0.01" value="0" oninput="receiptRecalcTotals()"></td>
+          </tr>
+          <tr>
+            <td><input type="text"></td>
+            <td><input type="number" min="0" value="0" oninput="receiptRecalcTotals()"></td>
+            <td><input type="number" min="0" step="0.01" value="0" oninput="receiptRecalcTotals()"></td>
+          </tr>
+          <tr>
+            <td><input type="text"></td>
+            <td><input type="number" min="0" value="0" oninput="receiptRecalcTotals()"></td>
+            <td><input type="number" min="0" step="0.01" value="0" oninput="receiptRecalcTotals()"></td>
+          </tr>
+          <tr>
+            <td><input type="text"></td>
+            <td><input type="number" min="0" value="0" oninput="receiptRecalcTotals()"></td>
+            <td><input type="number" min="0" step="0.01" value="0" oninput="receiptRecalcTotals()"></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="section-title">Summary</div>
+      <p style="font-size:12px;">
+        Total for services above should match the <strong>Amount Paid</strong> field in the receipt details.
+      </p>
+
+      <p style="margin-top:24px; font-size:12px;">Thank you for your business!</p>
+    </div>
+  </div>
 
   <script>
-    function switchTab(page, btn) {
-      document.getElementById('tool-frame').src = page;
+    let currentTool = 'quote';
+
+    function switchTool(toolName, btn) {
+      currentTool = toolName;
+
+      document.querySelectorAll('.tool-container').forEach(div => div.classList.remove('active'));
+      document.getElementById('tool-' + toolName).classList.add('active');
+
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+      if (btn) btn.classList.add('active');
     }
 
-    function downloadCurrentPDF() {
-      const frame = document.getElementById('tool-frame');
-      try {
-        if (frame.contentWindow && typeof frame.contentWindow.generatePDF === 'function') {
-          frame.contentWindow.generatePDF();
-        } else {
-          alert('The current tool does not support PDF generation.');
-        }
-      } catch (e) {
-        alert('Unable to access the tool frame. Make sure all files are opened from the same folder.');
-      }
+    function downloadPDF() {
+      let areaId;
+      if (currentTool === 'quote') areaId = 'quote-pdf-area';
+      else if (currentTool === 'invoice') areaId = 'invoice-pdf-area';
+      else if (currentTool === 'receipt') areaId = 'receipt-pdf-area';
+      else return alert('No active tool.');
+
+      const element = document.getElementById(areaId);
+      if (!element) return alert('PDF area not found.');
+
+      let filename = prompt("Enter a name for your PDF:");
+      if (!filename) filename = 'summit_' + currentTool;
+      filename = filename.replace(/[^a-z0-9_\\-]/gi, "_") + ".pdf";
+
+      const opt = {
+        margin: 0.5,
+        filename: filename,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+      };
+      html2pdf().set(opt).from(element).save();
     }
+
+    function quoteRecalcTotals() {
+      const tbody = document.querySelector('#quote-services tbody');
+      let subtotal = 0;
+      tbody.querySelectorAll('tr').forEach(row => {
+        const price = parseFloat(row.dataset.price || '0');
+        const checkbox = row.querySelector('input[type="checkbox"]');
+        const qtyInput = row.querySelector('input[type="number"]');
+        const lineCell = row.querySelector('.quote-line-total');
+
+        let qty = parseFloat(qtyInput.value || '0');
+        if (!checkbox.checked || qty <= 0) {
+          lineCell.textContent = '$0.00';
+          return;
+        }
+        const lineTotal = price * qty;
+        subtotal += lineTotal;
+        lineCell.textContent = '$' + lineTotal.toFixed(2);
+      });
+
+      const taxInput = document.getElementById('quote-tax');
+      const tax = parseFloat(taxInput.value || '0');
+      const finalTotal = subtotal + (isNaN(tax) ? 0 : tax);
+
+      document.getElementById('quote-subtotal').textContent = '$' + subtotal.toFixed(2);
+      document.getElementById('quote-final').textContent = '$' + finalTotal.toFixed(2);
+    }
+
+    function invoiceRecalcTotals() {
+      const rows = document.querySelectorAll('#invoice-services tbody tr');
+      let subtotal = 0;
+      rows.forEach(row => {
+        const qtyInput = row.cells[1].querySelector('input');
+        const priceInput = row.cells[2].querySelector('input');
+        const lineCell = row.querySelector('.inv-line-total');
+
+        const qty = parseFloat(qtyInput.value || '0');
+        const price = parseFloat(priceInput.value || '0');
+        const lineTotal = qty * price;
+
+        if (lineTotal > 0) {
+          lineCell.textContent = '$' + lineTotal.toFixed(2);
+        } else {
+          lineCell.textContent = '$0.00';
+        }
+        subtotal += lineTotal;
+      });
+
+      const tax = parseFloat(document.getElementById('inv-tax').value || '0');
+      const total = subtotal + (isNaN(tax) ? 0 : tax);
+
+      document.getElementById('inv-subtotal').textContent = '$' + subtotal.toFixed(2);
+      document.getElementById('inv-total').textContent = '$' + total.toFixed(2);
+    }
+
+    function receiptRecalcTotals() {
+      const rows = document.querySelectorAll('#receipt-services tbody tr');
+      let total = 0;
+      rows.forEach(row => {
+        const qty = parseFloat(row.cells[1].querySelector('input').value || '0');
+        const price = parseFloat(row.cells[2].querySelector('input').value || '0');
+        total += qty * price;
+      });
+      // If you ever want to surface this, you can.
+    }
+
+    // Initial calc
+    quoteRecalcTotals();
+    invoiceRecalcTotals();
+    receiptRecalcTotals();
   </script>
 </body>
 </html>
