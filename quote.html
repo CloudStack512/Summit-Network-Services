@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Summit Network Services - Quote</title>
+  <style>
+    @page {
+      margin: 0.5in;
+    }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 20px;
+      color: #111827;
+    }
+    h1, h2 {
+      text-align: center;
+      margin: 0;
+    }
+    h1 {
+      font-size: 22px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    h2 {
+      font-size: 15px;
+      margin-top: 4px;
+      margin-bottom: 12px;
+    }
+    .top-actions {
+      text-align: right;
+      margin-bottom: 12px;
+    }
+    button {
+      padding: 6px 10px;
+      border: 1px solid #111827;
+      background: #f9fafb;
+      cursor: pointer;
+      font-size: 13px;
+    }
+    button:hover { background: #e5e7eb; }
+
+    .logo-wrapper {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .logo-title {
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: 0.06em;
+    }
+    .logo-box {
+      margin: 6px auto 0;
+      width: 260px;
+      height: 80px;
+      border: 1px solid #9ca3af;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: #6b7280;
+      font-style: italic;
+    }
+
+    .section-title {
+      font-size: 13px;
+      margin-top: 14px;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      font-size: 12px;
+    }
+    th, td {
+      border: 1px solid #d1d5db;
+      padding: 4px 6px;
+    }
+    th {
+      background: #f3f4f6;
+      text-align: left;
+    }
+    input[type="text"], input[type="number"] {
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #d1d5db;
+      padding: 2px 4px;
+      font-size: 12px;
+    }
+    input[type="number"] { text-align: right; }
+    .totals-table td {
+      border: none;
+      padding: 2px 4px;
+    }
+    .totals-label {
+      text-align: right;
+      font-weight: 600;
+      width: 70%;
+    }
+    .totals-value {
+      text-align: right;
+      width: 30%;
+    }
+    .notes-box {
+      border: 1px solid #d1d5db;
+      min-height: 60px;
+      padding: 4px;
+      font-size: 12px;
+      white-space: pre-wrap;
+    }
+    @media print {
+      .top-actions { display: none; }
+      button { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-actions">
+    <button onclick="window.print()">Save / Print as PDF</button>
+  </div>
+
+  <div class="logo-wrapper">
+    <div class="logo-title">SUMMIT NETWORK SERVICES</div>
+    <div class="logo-box">PLACE LOGO HERE (PNG / SVG)</div>
+  </div>
+
+  <h2>Service Quote Checklist (Fixed Pricing)</h2>
+
+  <div class="section-title">Client Information</div>
+  <table>
+    <tr>
+      <td style="width:100px;">Client Name:</td>
+      <td><input type="text"></td>
+      <td style="width:90px;">Phone:</td>
+      <td><input type="text"></td>
+    </tr>
+    <tr>
+      <td>Business Name:</td>
+      <td><input type="text"></td>
+      <td>Email:</td>
+      <td><input type="text"></td>
+    </tr>
+    <tr>
+      <td>Address:</td>
+      <td><input type="text"></td>
+      <td>Assessment Date:</td>
+      <td><input type="text"></td>
+    </tr>
+  </table>
+
+  <div class="section-title">Available Services</div>
+  <table id="quote-services">
+    <thead>
+      <tr>
+        <th style="width: 24px;">✔</th>
+        <th>Service</th>
+        <th style="width: 90px;">Price</th>
+        <th style="width: 50px;">Qty</th>
+        <th style="width: 80px;">Line Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr data-price="35">
+        <td><input type="checkbox" onclick="recalcQuoteTotals()"></td>
+        <td>RJ45 Re-Termination</td>
+        <td>$35 per end</td>
+        <td><input type="number" min="0" value="0" oninput="recalcQuoteTotals()"></td>
+        <td class="line-total">$0.00</td>
+      </tr>
+      <tr data-price="50">
+        <td><input type="checkbox" onclick="recalcQuoteTotals()"></td>
+        <td>Wall Jack Re-Termination / Replacement</td>
+        <td>$50 each</td>
+        <td><input type="number" min="0" value="0" oninput="recalcQuoteTotals()"></td>
+        <td class="line-total">$0.00</td>
+      </tr>
+      <tr data-price="25">
+        <td><input type="checkbox" onclick="recalcQuoteTotals()"></td>
+        <td>Patch Panel Port Punchdown</td>
+        <td>$25 per port</td>
+        <td><input type="number" min="0" value="0" oninput="recalcQuoteTotals()"></td>
+        <td class="line-total">$0.00</td>
+      </tr>
+      <tr data-price="10">
+        <td><input type="checkbox" onclick="recalcQuoteTotals()"></td>
+        <td>Patch Cable Replacement</td>
+        <td>$10 each</td>
+        <td><input type="number" min="0" value="0" oninput="recalcQuoteTotals()"></td>
+        <td class="line-total">$0.00</td>
+      </tr>
+      <tr data-price="100">
+        <td><input type="checkbox" onclick="recalcQuoteTotals()"></td>
+        <td>Port Tracing / Toning</td>
+        <td>$100/hr</td>
+        <td><input type="number" min="0" value="0" oninput="recalcQuoteTotals()"></td>
+        <td class="line-total">$0.00</td>
+      </tr>
+      <tr data-price="100">
+        <td><input type="checkbox" onclick="recalcQuoteTotals()"></td>
+        <td>Network Testing &amp; Mapping</td>
+        <td>$100/hr</td>
+        <td><input type="number" min="0" value="0" oninput="recalcQuoteTotals()"></td>
+        <td class="line-total">$0.00</td>
+      </tr>
+      <tr data-price="250">
+        <td><input type="checkbox" onclick="recalcQuoteTotals()"></td>
+        <td>Full Labeling Package</td>
+        <td>$250</td>
+        <td><input type="number" min="0" value="0" oninput="recalcQuoteTotals()"></td>
+        <td class="line-total">$0.00</td>
+      </tr>
+      <tr data-price="250">
+        <td><input type="checkbox" onclick="recalcQuoteTotals()"></td>
+        <td>Documentation PDF Package</td>
+        <td>$250</td>
+        <td><input type="number" min="0" value="0" oninput="recalcQuoteTotals()"></td>
+        <td class="line-total">$0.00</td>
+      </tr>
+      <tr data-price="450">
+        <td><input type="checkbox" onclick="recalcQuoteTotals()"></td>
+        <td>Rack Cleanup (Small)</td>
+        <td>$450</td>
+        <td><input type="number" min="0" value="0" oninput="recalcQuoteTotals()"></td>
+        <td class="line-total">$0.00</td>
+      </tr>
+      <tr data-price="650">
+        <td><input type="checkbox" onclick="recalcQuoteTotals()"></td>
+        <td>Rack Cleanup (Medium)</td>
+        <td>$650</td>
+        <td><input type="number" min="0" value="0" oninput="recalcQuoteTotals()"></td>
+        <td class="line-total">$0.00</td>
+      </tr>
+      <tr data-price="850">
+        <td><input type="checkbox" onclick="recalcQuoteTotals()"></td>
+        <td>Rack Cleanup (Heavy)</td>
+        <td>$850</td>
+        <td><input type="number" min="0" value="0" oninput="recalcQuoteTotals()"></td>
+        <td class="line-total">$0.00</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title">Totals</div>
+  <table class="totals-table">
+    <tr>
+      <td class="totals-label">Subtotal:</td>
+      <td class="totals-value" id="quote-subtotal">$0.00</td>
+    </tr>
+    <tr>
+      <td class="totals-label">
+        Tax (if applicable):
+        <span style="font-weight: normal;">(enter tax amount)</span>
+      </td>
+      <td class="totals-value">
+        <input type="number" id="quote-tax" value="0" step="0.01" oninput="recalcQuoteTotals()">
+      </td>
+    </tr>
+    <tr>
+      <td class="totals-label">Final Total:</td>
+      <td class="totals-value" id="quote-final">$0.00</td>
+    </tr>
+    <tr>
+      <td class="totals-label">Service Call Minimum:</td>
+      <td class="totals-value">$150.00</td>
+    </tr>
+  </table>
+
+  <div class="section-title">Notes / Findings</div>
+  <div class="notes-box" contenteditable="true"></div>
+
+  <script>
+    function recalcQuoteTotals() {
+      const tbody = document.querySelector('#quote-services tbody');
+      let subtotal = 0;
+      tbody.querySelectorAll('tr').forEach(row => {
+        const price = parseFloat(row.dataset.price || '0');
+        const checkbox = row.querySelector('input[type="checkbox"]');
+        const qtyInput = row.querySelector('input[type="number"]');
+        const lineCell = row.querySelector('.line-total');
+
+        let qty = parseFloat(qtyInput.value || '0');
+        if (!checkbox.checked || qty <= 0) {
+          lineCell.textContent = '$0.00';
+          return;
+        }
+        const lineTotal = price * qty;
+        subtotal += lineTotal;
+        lineCell.textContent = '$' + lineTotal.toFixed(2);
+      });
+
+      const taxInput = document.getElementById('quote-tax');
+      const tax = parseFloat(taxInput.value || '0');
+      const finalTotal = subtotal + (isNaN(tax) ? 0 : tax);
+
+      document.getElementById('quote-subtotal').textContent = '$' + subtotal.toFixed(2);
+      document.getElementById('quote-final').textContent = '$' + finalTotal.toFixed(2);
+    }
+    recalcQuoteTotals();
+  </script>
+</body>
+</html>
